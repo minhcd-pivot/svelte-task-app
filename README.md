@@ -48,6 +48,4 @@ export default writable(0);
 
 **Credit**
 
-```
 w3cj: https://github.com/w3cj/svelte-5-tasks-app
-```
