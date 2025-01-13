@@ -46,6 +46,8 @@ import { writable } from "svelte/store";
 export default writable(0);
 ```
 
-```Credit
+**Credit**
+
+```
 w3cj: https://github.com/w3cj/svelte-5-tasks-app
 ```
