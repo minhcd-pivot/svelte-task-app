@@ -1,15 +1,28 @@
 <script lang="ts">
+  import { tasks, setTasks } from "@/stores/tasks.svelte";
+  import { apiAddTask } from "@/lib/api";
+
   let newTask = $state("");
-  let {
-    addTask,
-  }: {
-    addTask: (newTask: string) => void;
-  } = $props();
 
   function formSubmitted(e: SubmitEvent) {
     e.preventDefault();
     addTask(newTask);
     newTask = "";
+  }
+
+  async function addTask(newTask: string) {
+    const task = {
+      todo: newTask,
+      completed: false,
+      userId: 5,
+    };
+
+    const { id } = await apiAddTask(task);
+
+    if (id) {
+      // Dummy api alwasys returns 255 which make api delete fail
+      setTasks([...tasks(), { ...task, id: tasks().length + 1 }]);
+    }
   }
 </script>
 
